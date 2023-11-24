@@ -57,3 +57,8 @@ Salir del contenedor
 ```sh
 exit
 ```
+
+Buscar palabra en el archivo procesado:
+```sh
+python3 search.py "palabra_a_buscar"
+```
