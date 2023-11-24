@@ -19,6 +19,7 @@ def buscador(archivo, palabra):
             # Ordenar el arreglo según el segundo valor de cada par, de mayor a menor
             arr = sorted(pares, key=lambda x: x[1], reverse=True)
             imprimir(palabra, arr)
+            return None
         elif datos[0] < palabra:
             inicio = medio + 1
         else:
@@ -26,7 +27,6 @@ def buscador(archivo, palabra):
     print(f"Error: La palabra '{palabra}' no se encontró en el archivo.")
 
 def imprimir(palabra, arr):
-    
     # Selecciona solo los primeros 5 elementos de la lista 'datos'
     arr = arr[:5]
 
