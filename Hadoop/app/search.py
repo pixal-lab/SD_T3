@@ -14,7 +14,7 @@ def buscador(archivo, palabra):
         linea_actual = lineas[medio]
         datos = linea_actual.split("\t")
         if datos[0] == palabra:
-            pares = re.findall(r'\((\d+), (\d+)\)', texto)
+            pares = re.findall(r'\((\d+), (\d+)\)', datos[1])
             # Convertir los pares de cadenas a pares de enteros
             pares = [(int(x), int(y)) for x, y in pares]
             # Ordenar el arreglo según el segundo valor de cada par, de mayor a menor
