@@ -1,5 +1,12 @@
 import requests
 import json
+import os
+
+if not os.path.exists("carpeta1"):
+    os.makedirs("carpeta1")
+
+if not os.path.exists("carpeta2"):
+    os.makedirs("carpeta2")
 
 entradas = [
     "mazda", 
