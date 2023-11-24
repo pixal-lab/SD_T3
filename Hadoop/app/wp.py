@@ -32,7 +32,7 @@ entradas = [
     "The_Dark_Knight",
     "Inception",
 
-    "The_Legend_of_Zelda:_Ocarina_of_Time",
+    "The_Legend_of_Zelda",
     "Super_Mario_Bros",
     "Minecraft",
     "Grand_Theft_Auto_V",
