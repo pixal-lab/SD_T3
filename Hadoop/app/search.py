@@ -1,4 +1,8 @@
-def buscar_palabra_binario(archivo, palabra):
+import argparse
+
+
+
+def buscador(archivo, palabra):
     with open(archivo, 'r') as file:
         lineas = file.readlines()
 
@@ -9,8 +13,8 @@ def buscar_palabra_binario(archivo, palabra):
         medio = (inicio + fin) // 2
         linea_actual = lineas[medio]
         datos = linea_actual.split("\t")
-        print(datos)
         if datos[0] == palabra:
+            print(datos)
             return datos
         elif datos[0] < palabra:
             inicio = medio + 1
@@ -20,14 +24,12 @@ def buscar_palabra_binario(archivo, palabra):
     print(f"Error: La palabra '{palabra}' no se encontró en el archivo.")
     return None
 
-# Ejemplo de uso
-archivo_datos = '/home/pixal/U archivos/SD/T3/Ayudantia-2023-2S/Ayu3/Hadoop/examples/outhadoop/part-00000'
-palabra_buscada = 'tesla'
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
 
-resultados = buscar_palabra_binario(archivo_datos, palabra_buscada)
+    parser.add_argument('Palabra', type=str, help='Palabra a buscar')
+    args = parser.parse_args()
 
-if resultados:
-    for resultado in resultados:
-        print(f'Archivo: {resultado[0]}, Frecuencia: {resultado[1]}')
-else:
-    print(f'La palabra "{palabra_buscada}" no se encontró en el archivo.')
+    path = 'outhadoop/part-00000'
+    word = args.palabra
+    buscador(path, word)
