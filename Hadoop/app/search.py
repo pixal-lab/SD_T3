@@ -28,10 +28,18 @@ def buscador(archivo, palabra):
 
 def imprimir(palabra, arr):
     # Selecciona solo los primeros 5 elementos de la lista 'datos'
-    arr = arr[:5]
+    datos = arr[:5]
 
-    # Crea una lista de diccionarios con las claves "Documento" y "Frecuencia"
-    resultado = [{"Documento": doc, "Frecuencia": freq} for doc, freq in arr]
+    documentos_urls = {}
+    with open('data.txt', 'r') as file:
+        for line in file:
+            parts = line.strip().split('\t')
+            if len(parts) == 2:
+                documento, url = int(parts[0]), parts[1]
+                documentos_urls[documento] = url
+
+    # Crea una lista de diccionarios con las claves "Documento", "Frecuencia" y "url"
+    resultado = [{"Documento": doc, "Frecuencia": freq, "url": documentos_urls.get(doc, "")} for doc, freq in datos]
 
     # Crea el diccionario final con la palabra y la lista de diccionarios
     resultado_final = {palabra: resultado}
