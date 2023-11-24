@@ -1,4 +1,4 @@
-import argparse
+import argparse, re
 
 
 
@@ -14,11 +14,12 @@ def buscador(archivo, palabra):
         linea_actual = lineas[medio]
         datos = linea_actual.split("\t")
         if datos[0] == palabra:
-            pares = [list(map(int, par.strip('()').split(','))) for par in datos[1].split()]
-
-            # Paso 3: Ordenar la lista de listas según el segundo valor de cada par
-            arr_ordenado = sorted(pares, key=lambda x: x[1], reverse=True)
-            print(arr_ordenado)
+            pares = re.findall(r'\((\d+), (\d+)\)', texto)
+            # Convertir los pares de cadenas a pares de enteros
+            pares = [(int(x), int(y)) for x, y in pares]
+            # Ordenar el arreglo según el segundo valor de cada par, de mayor a menor
+            arr = sorted(pares, key=lambda x: x[1], reverse=True)
+            print(arr)
             return datos
         elif datos[0] < palabra:
             inicio = medio + 1
