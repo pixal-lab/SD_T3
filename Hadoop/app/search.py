@@ -1,6 +1,5 @@
 import argparse, re
-
-
+import json
 
 def buscador(archivo, palabra):
     with open(archivo, 'r') as file:
@@ -19,18 +18,29 @@ def buscador(archivo, palabra):
             pares = [(int(x), int(y)) for x, y in pares]
             # Ordenar el arreglo según el segundo valor de cada par, de mayor a menor
             arr = sorted(pares, key=lambda x: x[1], reverse=True)
-            print(arr[0])
-            print(arr[1])
-            print(arr[2])
-            print(arr[3])
-            return datos
+            imprimir(palabra, arr)
         elif datos[0] < palabra:
             inicio = medio + 1
         else:
             fin = medio - 1
-
     print(f"Error: La palabra '{palabra}' no se encontró en el archivo.")
-    return None
+
+def imprimir(palabra, arr):
+    
+    # Selecciona solo los primeros 5 elementos de la lista 'datos'
+    arr = arr[:5]
+
+    # Crea una lista de diccionarios con las claves "Documento" y "Frecuencia"
+    resultado = [{"Documento": doc, "Frecuencia": freq} for doc, freq in arr]
+
+    # Crea el diccionario final con la palabra y la lista de diccionarios
+    resultado_final = {palabra: resultado}
+
+    # Convierte el diccionario a formato JSON
+    json_resultado = json.dumps(resultado_final, indent=4)
+
+    # Imprime el resultado
+    print(json_resultado)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
