@@ -27,7 +27,7 @@ def buscador(archivo, palabra):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('Palabra', type=str, help='Palabra a buscar')
+    parser.add_argument('palabra', type=str, help='Palabra a buscar')
     args = parser.parse_args()
 
     path = 'outhadoop/part-00000'
