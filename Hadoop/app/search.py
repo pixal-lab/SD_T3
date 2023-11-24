@@ -14,7 +14,11 @@ def buscador(archivo, palabra):
         linea_actual = lineas[medio]
         datos = linea_actual.split("\t")
         if datos[0] == palabra:
-            print(datos)
+            pares = [list(map(int, par.strip('()').split(','))) for par in datos[1].split()]
+
+            # Paso 3: Ordenar la lista de listas según el segundo valor de cada par
+            arr_ordenado = sorted(pares, key=lambda x: x[1], reverse=True)
+            print(arr_ordenado)
             return datos
         elif datos[0] < palabra:
             inicio = medio + 1
