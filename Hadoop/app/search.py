@@ -19,7 +19,10 @@ def buscador(archivo, palabra):
             pares = [(int(x), int(y)) for x, y in pares]
             # Ordenar el arreglo según el segundo valor de cada par, de mayor a menor
             arr = sorted(pares, key=lambda x: x[1], reverse=True)
-            print(arr)
+            print(arr[0])
+            print(arr[1])
+            print(arr[2])
+            print(arr[3])
             return datos
         elif datos[0] < palabra:
             inicio = medio + 1
