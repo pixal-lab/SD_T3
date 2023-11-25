@@ -62,3 +62,7 @@ Buscar palabra en el archivo procesado:
 ```sh
 python3 search.py "palabra_a_buscar"
 ```
+
+## Video de instalación, uso y explicación
+
+[![Watch the video](https://img.youtube.com/vi/U7_dAycum9I/hqdefault.jpg)](https://youtu.be/U7_dAycum9I)
